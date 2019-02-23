@@ -1,0 +1,71 @@
+/**
+ * # Base
+ *
+ * Otros estilos base
+ */
+
+html
+	box-sizing border-box
+	color $fontColor
+	font-family $fuente-principal
+	font-size 17px
+	-webkit-font-smoothing antialiased
+	-moz-osx-font-smoothing grayscale
+	line-height 1.5
+	text-align center
+
+em
+i
+	font-family $fuente-principal-italica
+	b
+	strong
+		font-family $fuente-principal-italica-negrita
+
+b
+strong
+	font-family $fuente-principal-negrita
+	em
+	i
+		font-family $fuente-principal-italica-negrita
+
+figcaption
+	font-family $fuente-principal-italica
+	
+main
+	max-width 960px
+	margin-left auto
+	margin-right auto
+	padding 0.5em
+	
+@media all and (min-width:50em)
+	main
+		padding 0.5em 1em
+	
+a
+	color $rosa
+	font-family $fuente-principal-italica
+	font-style italic
+	text-decoration none
+	&:hover
+	&:focus
+		color $rosa_fuerte
+		text-decoration underline
+
+
+.video
+	margin 1em 0
+	video
+		display block
+		width 100%
+
+*
+:before
+:after
+	text-rendering optimizelegibility
+
+[class^="icon-"], [class*=" icon-"]
+	&.left
+		margin-left 1em
+	&.right
+		margin-right 1em
+

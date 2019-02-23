@@ -1,0 +1,28 @@
+/* Fuente de títulos */
+@font-face {
+	font-family: "Open Sans Condensed";
+	src: url('fonts/OpenSansCondensed.eot');
+	src: url('fonts/OpenSansCondensed.eot?#iefix') format('embedded-opentype'), url('fonts/OpenSansCondensed.svg#OpenSansCondensed') format('svg'), url('fonts/OpenSansCondensed.ttf') format('truetype'), url('fonts/OpenSansCondensed.woff') format('woff'), url('fonts/OpenSansCondensed.woff2') format('woff2');
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+	
+/* Fuente Principal */
+@font-face {
+	font-family: 'Droid Serif';
+	src: url('fonts/DroidSerif.eot');
+	src: url('fonts/DroidSerif.eot?#iefix') format('embedded-opentype'), 
+		url('fonts/DroidSerif.svg#DroidSerif') format('svg'), 
+		url('fonts/DroidSerif.ttf') format('truetype'), 
+		url('fonts/DroidSerif.woff') format('woff'), 
+		url('fonts/DroidSerif.woff2') format('woff2');
+}
+
+html
+{
+	font-family: 'Droid Serif', serif !important;
+}
+h1, h2, h3, h4, h5, h6
+{
+	font-family: "Open Sans Condensed", sans-serif !important;
+}

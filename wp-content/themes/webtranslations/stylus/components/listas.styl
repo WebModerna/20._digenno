@@ -1,0 +1,58 @@
+// Listas
+ol
+ul
+	list-style-position inside
+	
+ol
+	counter-reset item
+	list-style none
+	line-height 2em
+	li
+		&:before
+			content counter(item) " )"
+			counter-increment item
+			color $rosa
+			display inline
+			// font-family 'Open Sans Condensed', 'Helvetica', sans-serif
+			font-weight bolder
+			margin-right 0.5em
+	
+/*ul
+	list-style-image url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAMAAACelLz8AAAAA3NCSVQICAjb4U/gAAAAflBMVEX/////8P//5///8P//5///8P//5///5///5///5///5///5///5//////2/////+7//97/7s7x7v//5//95ff84fLx3v//3r30zdnnzu76zqzxxM7ivd72vZrstLrrsrjirM7xrJroq6/np6rlo6Ximr3smprnmprimqzimpoRoHnwAAAAKnRSTlMAEREiIjMzd4iZu93u//////////////////////////////////////8NcV/nAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M1cbXjNgAAAPhJREFUKJGFkutygyAUhEm1mqCkTRdTU1tNhV7O+79gD+EiZtJ2fzAMny4LrBBBRS2btm1kXYi17iWSZJWTHaD7yRCZqdfALoE7CT1QlB005CYgiW6mTHMHGd06SyvZzntW0DNdadaoLnbDNSEanGUBna+9qsOXs9QoRY0+I99PHlGPmv2mDJ3Uw/tlMrJjA7OQ8169+JlBI1rcsOPN0EZ0Um8ugxsT8ob8/ePnx149RwNnGGLw8uHIOCIXI4bnBIudD89HtmG3lCEcebmoYzhSuqi/rvf2o2z/e0qxcQVIP64KEGozGmvN6GqzzStV/Vo2VhkrWsaVH88pQd5Ew4zCAAAAAElFTkSuQmCC")*/
+ul
+	list-style none
+	li
+		&:before
+			color $rosa
+			content "\e600"
+			font-family 'icon'
+			margin-right 0.5em
+	
+
+.listado__servicios
+	ul
+		font-size 1.5em
+		list-style none
+		margin 0
+		padding 0
+		li
+			img
+				display inline-block
+				vertical-align middle
+				
+
+// Listas horizontales separadas por una barra
+.ul_horizontal
+	li
+		display inline-block
+	li + li
+		border-left 1px dotted $silver
+
+.sd-content
+	ul
+		li
+			&:before
+				content ""
+				margin-right auto
+			a
+				font-style normal

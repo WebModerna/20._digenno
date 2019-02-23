@@ -1,0 +1,42 @@
+// Tamaños de los thumbnails de WordPress
+.size-thumbnail // pequeño
+	height 150px
+	width 150px
+	
+.size-medium // Medio
+	height auto
+	width 100%
+	max-width 100%
+
+@media all and (min-width: 450px)
+	.size-medium
+		width 350px
+		max-width 350px
+	
+.size-large // Grande
+	height auto
+	max-width 100%
+	width 100%
+	
+@media all and (min-width: 650px)
+	.size-large
+		max-width 600px
+		width 600px
+	
+.size-full // Completo
+	height auto
+	max-width 100%
+	width 100%
+
+.wp-caption[style] // div que envuelve a la imagen y al caption.
+	background $nube
+	display inline-block
+	text-align center
+	width auto !important
+	
+.wp-caption-text // párrafo de caption
+	color $gris_fuerte
+	font-family $fuente-principal-italica
+	font-size 0.9em
+	font-style italic
+	margin 0.5em auto

@@ -1,0 +1,242 @@
+// Formato de la barra de navegación principal
+.nav
+	display block
+	margin-top 1em
+	&:before
+		content ""
+		clear both
+		display block
+.nav
+.menu
+	box-sizing border-box
+	position relative
+	text-align left
+	z-index 200
+
+.nav--listado
+	background $black
+	display block
+	font-family $fuente-Titulos
+	height 0
+	margin 0
+	opacity 0
+	padding 0
+	visibility hidden
+	width 100%
+	li
+		display block
+		list-style none
+		&:before
+			content ""
+			margin 0
+		a
+			color $nube
+			display block
+			font-family $fuente-Titulos
+			font-size 1.3em
+			font-style normal
+			padding 0.5em 1em
+			position relative
+			text-decoration none
+			transition all 0.1s ease-in-out
+
+			// Estilos al hover y al focus
+			&:hover
+			&:focus
+				background $black_suave	
+			
+// Estilo solo al border superior exepto al primer item del menú
+.nav--listado
+	li + li
+		border-top 1px solid $gray
+		border-top 1px solid rgba($black_puro, 0.25)
+		box-shadow 0px 1px 0px 0px rgba($white, 0.075) inset
+
+.sub-menu
+	li:first-child
+		border-top 1px solid $gray
+		border-top 1px solid rgba($black_puro, 0.25)
+		box-shadow 0px 1px 0px 0px rgba($white, 0.075) inset		
+			
+// Estilos cuando está abierto o cerrado el menú de navegación
+.nav
+.menu
+	.nav--listado-abrir
+		height auto
+		opacity 1
+		visibility visible
+	
+	.nav--listado-cerrar
+		height 0
+		opacity 0
+		visibility hidden
+
+// Estilos cuando el item está siendo visitado actualmente
+.nav--listado
+	.current_menu_item > a
+	.current_page_item > a
+	.sub-menu .current_page_item > a
+	.sub-menu .current-menu-item > a
+		background $black_fuerte
+		color $white
+		&:hover
+			background $black_fuerte
+			text-decoration none
+
+// Es para navegar de un post al siguiente y viceversa 
+.enlaces__navegacion
+	display block
+	margin 1em auto
+	padding 0
+	div
+		box-sizing border-box
+		display block
+		padding 0
+		margin 0
+		vertical-align middle
+		text-align center
+		a
+			background $rosa
+			border 1px solid $rosa
+			// border-bottom-color $white
+			box-sizing border-box
+			color $white
+			display block
+			height 100%
+			margin 1px 0 0 0
+			padding 0.5em 1em
+			text-decoration none
+			&:hover
+			&:focus
+				background $white
+				box-shadow 0px 0px 10px  $rosa inset
+				color $rosa
+		&:hover
+		&:focus
+			background $nube
+
+	div + div
+		border-bottom none
+
+	.prev
+		a
+			&:before
+				content "← "
+	.next
+		a
+			&:after
+				content " →"
+
+
+// Cuando se agranda la pantalla
+@media all and (min-width:30em)
+	.enlaces__navegacion
+		overflow hidden
+		div
+			display inline-block
+			float left
+			width 49.9%
+			
+		div + div
+			border-left 1px solid $white
+			border-bottom none
+		
+		.next
+			text-align right
+		.prev
+			text-align left
+
+				
+
+// Cuando se agranda la pantalla
+@media all and (min-width:50em)
+	.nav
+		margin-top auto
+		position relative
+
+	.nav
+	.menu
+		display block
+		float right
+		
+	.nav--listado
+		background none
+		margin-top 0
+		height auto
+		opacity 1
+		right 0
+		top 3em
+		visibility visible
+		width 100%
+		li
+			display inline-block
+			float left
+			a
+				color $nube
+				position relative
+				text-shadow none
+				&:hover
+				&:focus
+					background $black_fuerte
+						
+				
+		// Eliminamos el estilo solo al border superior exepto al primer item del menú
+		li + li
+			border-top none
+			box-shadow none
+			
+	// Estilos cuando el item está siendo visitado actualmente
+	.nav--listado
+		li
+			position relative
+
+		.current-menu-item
+		.current_page_item
+			a
+				background none
+				border-bottom 4px solid $rosa
+				&:hover
+					text-decoration none
+
+		.current-menu-item > ul li
+		.current_page_item > ul li
+			a
+				border-bottom none
+
+
+	.nav--listado li ul
+		background $black
+		display block
+		height 0
+		margin 0
+		opacity 0
+		padding 0
+		position absolute
+		right 0
+		transition all 0.1s ease-in-out
+		visibility hidden
+		li
+			display block
+			float none
+
+	.nav--listado li:hover > ul
+		height auto
+		opacity 1
+		visibility visible
+		width 250px
+	
+	.nav--listado li
+		a + .sub-menu
+			&:before
+				display inline-block
+				content ""
+				border 0.5em solid transparent
+				border-top-color $black_fuerte
+				position absolute
+				top 0
+				right 1em
+
+	.sub-menu
+		li:first-child
+			border-top none
+			box-shadow none

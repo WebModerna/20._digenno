@@ -1,0 +1,38 @@
+// Galería de imágenes
+.galeria
+	padding 0
+	text-align center
+	ul
+		list-style none
+		margin 0
+		padding 0
+		width 100%
+		li
+			&:before
+				content ""
+				margin-right auto
+
+.galeria--item
+	max-width 450px
+	padding 0
+	margin 1px auto
+	a
+		display block
+		max-width 450px
+		transition_comun()
+		&:hover
+		&:focus
+			opacity 0.5
+	img
+		width 100%
+			
+@media all and (min-width:30em)
+	.galeria--item
+		display inline-block
+		margin 0
+		
+@media all and (min-width: 900px)
+	.galeria--item
+		max-width 300px
+		a
+			max-width 300px

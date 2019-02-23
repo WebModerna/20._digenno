@@ -1,0 +1,49 @@
+// Citas y los bloques
+
+blockquote
+cite
+	color $gris_fuerte
+	font-family $fuente-principal-italica
+	font-size 1.2em
+	font-style italic 
+	position relative
+
+blockquote
+	// background url('../img/iconos-png/Entypo_275e(26)_32.png') top left no-repeat
+	border 1px dashed $silver
+	border-left 3px solid $rosa
+	padding 1em 1.1em
+	margin 1em
+	text-align right
+	&:before
+		background $rosa
+		border 3px solid $white_crema
+		border-radius 20em
+		border-radius 50%
+		color $white
+		content "\e978"
+		float left
+		font-family 'icon'
+		font-size 1em
+		line-height 100%
+		margin 0 1em 1em 0
+		padding 0.5em
+
+@media all and (min-width: 480px)
+	blockquote
+		margin 1.5em 2em
+
+/*cite
+	// color $VerdeClaro
+	&:after
+	&:before
+		color $Celeste
+		font-family "icon"
+		font-size 1em
+		font-style normal
+	&:after
+		content "\e605"
+		padding-left 0.5em
+	&:before
+		content "\e604"
+		padding-right 0.5em*/

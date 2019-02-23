@@ -1,0 +1,86 @@
+// El encabezado principal de la web
+.header
+	box-sizing border-box
+	text-align center
+
+	
+.titulo_home
+	color $white
+	display inline-block
+	margin auto
+	font-size 1.1em
+	max-width 300px
+	h1
+		border-bottom 1px solid $white
+		font-weight lighter
+		font-size 2.6em
+		letter-spacing -3px
+		margin 0 0 0.2em 0
+		padding 0 0 0.4em 0
+		line-height 95%
+	a
+		font-style normal
+		
+.boton_home
+	.boton
+		font-size 1.2em
+		
+		
+
+@media all and (min-width:50em)
+	.header
+		position relative
+	
+	.hidden
+		display none !important
+	
+	.titulo_home
+		font-size 1.4em
+		h1
+			font-size 2.5em
+			line-height 90%
+		
+	
+
+// El logotipo
+/*
+Siempre tiene la forma siguiente
+<div class="logo">
+	<a href="enlace">
+		<img src="img/logo.png" alt="título" />
+	</a>
+</div>
+*/
+.logo
+.logo_home
+	display inline-block
+	margin 0.5em
+	vertical-align top
+
+	img
+		display block
+	a
+		display block
+		font-family $fuente-Titulos !important
+
+.logo
+	float left
+	max-width 100px
+	img
+		width 50px
+	a
+		font-style normal
+		font-size 20px
+		text-decoration none
+		line-height 100%
+
+@media only screen and (min-width: 50em)
+	.logo
+		max-width none
+		a
+			font-size 30px
+		
+.logo_home
+	width 80px
+	img
+		width 80px

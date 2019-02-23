@@ -1,0 +1,113 @@
+@media only print
+	*,
+	*:before,
+	*:after,
+	.wrapper,
+		background transparent !important
+		color #000 !important
+		box-shadow none !important
+		text-shadow none !important
+
+	a
+		&:visited
+			text-decoration underline
+
+	/*a[href]:after
+		content " (" attr(href) ")"*/
+		
+	a[href^="#"]:after,
+	a[href^="javascript:"]:after
+		content ""
+
+	abbr[title]:after
+		content " (" attr(title) ")"
+
+	blockquote,
+	cite,
+	pre,
+		border 1px solid #999
+		page-break-inside avoid
+		
+	blockquote
+		&:before
+			content "\e978"
+			font-family 'icon'
+			font-size 1em
+			left -1em
+			position relative
+			text-align left
+
+	img,
+	tr
+		page-break-inside avoid
+
+	img,
+		max-width 100% !important
+
+	h2, h3, h4, h5, h6,
+	p
+		orphans 3
+		widows 3
+
+	h2,	h3
+		page-break-after avoid
+	
+	h1, h2, h3, h4, h5,
+	.heading
+		background $nube !important
+		border-bottom 1px solid $silver
+
+
+	table
+		border-collapse collapse !important
+		
+		td,
+		th
+			background-color #fff !important
+			border 1px solid #ddd !important
+
+	thead
+		display table-header-group
+	
+	
+	button,
+	input[type="submit"],
+	input[type="reset"],
+	#respond,
+	.boton_home,
+	.breadcrums,
+	.captcha,
+	.captchar,
+	.comment-edit-link,
+	.contacto,
+	.enlaces__navegacion,
+	.etiqueta,
+	.etiqueta:after,
+	.etiqueta:before,
+	.nav,
+	.redes_sociales,
+	.reply,
+	.switcher,
+	.video
+		display none !important
+
+	.boton
+		border-top-color #000 !important
+		
+	.copyright
+		a[href]:after
+			content " (" attr(href) ")" !important
+
+	.label
+		border 1px solid #000
+		
+	.logo
+		float none
+		width auto
+		a
+			display table-cell	
+		
+		.h2
+			display table-cell !important
+			font-size 1.5em
+			vertical-align middle

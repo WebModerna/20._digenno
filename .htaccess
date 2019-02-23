@@ -1,0 +1,52 @@
+## BEGIN WordPress
+#<IfModule mod_rewrite.c>
+#RewriteEngine On
+#RewriteBase /20._WebTranslation/
+#RewriteRule ^index\.php$ - [L]
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule . /20._WebTranslation/index.php [L]
+#</IfModule>
+
+RewriteEngine On
+RewriteBase /20._WebTranslation/
+RewriteRule ^index\.php$ - [L]
+
+# add a trailing slash to /wp-admin
+RewriteRule ^([_0-9a-zA-Z-]+/)?wp-admin$ $1wp-admin/ [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) $2 [L]
+RewriteRule ^([_0-9a-zA-Z-]+/)?(.*\.php)$ $2 [L]
+RewriteRule . index.php [L]
+
+# END WordPress
+<Files *.css>
+SetOutputFilter DEFLATE
+</Files>
+
+<Files *.js>
+SetOutputFilter DEFLATE
+</Files>
+
+<Files *.php>
+SetOutputFilter DEFLATE
+</Files>
+
+<Files *.po>
+SetOutputFilter DEFLATE
+</Files>
+
+<Files *.mo>
+SetOutputFilter DEFLATE
+</Files>
+
+<Files *.html>
+SetOutputFilter DEFLATE
+</Files>
+
+<Files *.htm>
+SetOutputFilter DEFLATE
+</Files>

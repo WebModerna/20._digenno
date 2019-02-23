@@ -1,0 +1,19 @@
+/* Estilos para el ie8 */
+
+input[type="file"]
+{
+	display: inline-block;
+	position: relative;
+	right: 1208px;
+	width: 0;
+}
+
+/*.fondo
+{
+	-ms-behavior: url('../js/backgroundsize.min.htc');
+}*/
+
+.redes_sociales ul li
+{
+	margin: 0 0.1em;
+}

@@ -1,0 +1,25 @@
+// Paginación. Estilos
+
+.pagination
+	clear both
+	color $gris_fuerte
+	padding 1em
+	margin 0.5em auto
+	text-align center
+	a
+		display inline-block
+		margin 0
+		padding 0.3em 0.5em
+	span
+		display inline-block
+		margin 0
+		padding 0.3em 0.5em
+		&:first-child
+			&:after
+				content " :"
+		
+	.current
+		color $gris_fuerte
+		font-family $fuente-principal-italica-negrita
+		font-style italic
+		font-weight bolder
