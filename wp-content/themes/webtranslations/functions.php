@@ -65,11 +65,11 @@ function admin_favicon()
 add_action('admin_head', 'admin_favicon');
 
 
-// Deshabilitar el mensaje de actualización del WordPress
+/*// Deshabilitar el mensaje de actualización del WordPress
 if ( !current_user_can( 'edit_users' ) ) {
   add_action( 'init', create_function( '$a', "remove_action( 'init', 'wp_version_check' );" ), 2 );
   add_filter( 'pre_option_update_core', create_function( '$a', "return null;" ) );
-}
+}*/
 
 /*
 // Agregando una clase al formulario de contacto
@@ -1198,7 +1198,7 @@ add_action('get_header', 'wp_html_compression_start');
  *
  * @link http://blackhillswebworks.com/?p=5088
  */
- 
+ /*
 add_action( 'template_redirect', 'bhww_ssl_template_redirect', 1 );
 
 function bhww_ssl_template_redirect() {
@@ -1244,6 +1244,7 @@ function rsssl_check_protocol_multisite($url, $scheme, $orig_scheme){
 // Algo con respecto a las ssl seguro..
 define( 'PILAU_REQUEST_PROTOCOL', isset( $_SERVER[ 'HTTPS' ] ) ? 'https' : 'http' );
 
+*/
 // Cambiando el background del panel de administración
 /*add_action('admin_head', 'logo_admin');
 function logo_admin()
