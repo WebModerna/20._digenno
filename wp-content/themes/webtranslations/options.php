@@ -139,7 +139,7 @@ function optionsframework_options()
 		'name' => __('MeWe', 'options_framework_theme'),
 		'desc' => __('Introduzca su enlace a MeWee.', 'options_framework_theme'),
 		'id' => 'mewe_contact',
-		'placeholder' => '',
+		'placeholder' => 'mewe.com/join/idiomas',
 		'class' => '',
 		'type' => 'text'
 	);

@@ -7,7 +7,7 @@
 				$twitter_contact = of_get_option('twitter_contact','');
 				$linkedin_contact = of_get_option('linkedin_contact', '');
 				$telegram_contact = of_get_option('telegram_contact','');
-				$mewe_contact_contact = of_get_option('mewe_contact_contact','');
+				$mewe_contact = of_get_option('mewe_contact','');
 				$email_contact = of_get_option('email_contact','');
 
 				if($linkedin_contact)
@@ -38,7 +38,9 @@
 				{
 				echo '
 					<li>
-						<a rel="" title="Telegram" target="_blank" class="blanco redondo " href="http://' . $telegram_contact . '"></a>
+						<a rel="" title="Telegram" target="_blank" class="redondo red_social red_social_telegram" href="' . $telegram_contact . '">
+							<img alt="Telegram" src="'.get_stylesheet_directory_uri().'/img/telegram.png" />
+						</a>
 					</li>';
 				}
 
@@ -46,7 +48,9 @@
 				{
 				echo '
 					<li>
-						<a rel="" title="MeWe" target="_blank" class="blanco redondo " href="http://' . $mewe_contact . '"></a>
+						<a rel="" title="MeWe" target="_blank" class="redondo red_social red_social_mewee" href="' . $mewe_contact . '">
+							<img alt="MeWe" src="'.get_stylesheet_directory_uri().'/img/mewe.jpeg" />
+						</a>
 					</li>';
 				}
 
