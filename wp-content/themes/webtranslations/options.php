@@ -124,12 +124,22 @@ function optionsframework_options()
 		'type' => 'text'
 	);
 	
-	// Google+
+	// Telegram
 	$options[] = array(
-		'name' => __('Google+', 'options_framework_theme'),
-		'desc' => __('Introduzca su enlace a Google+.', 'options_framework_theme'),
-		'id' => 'google_plus_contact',
-		'placeholder' => 'plus.google.com/usuario',
+		'name' => __('Telegram', 'options_framework_theme'),
+		'desc' => __('Introduzca su canal.', 'options_framework_theme'),
+		'id' => 'telegram_contact',
+		'placeholder' => 't.me/traduccionProfesional',
+		'class' => '',
+		'type' => 'text'
+	);
+
+	// MeWe
+	$options[] = array(
+		'name' => __('MeWe', 'options_framework_theme'),
+		'desc' => __('Introduzca su enlace a MeWee.', 'options_framework_theme'),
+		'id' => 'mewe_contact',
+		'placeholder' => '',
 		'class' => '',
 		'type' => 'text'
 	);

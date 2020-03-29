@@ -6,7 +6,8 @@
 				$facebook_contact = of_get_option('facebook_contact','');
 				$twitter_contact = of_get_option('twitter_contact','');
 				$linkedin_contact = of_get_option('linkedin_contact', '');
-				$google_plus_contact = of_get_option('google_plus_contact','');
+				$telegram_contact = of_get_option('telegram_contact','');
+				$mewe_contact_contact = of_get_option('mewe_contact_contact','');
 				$email_contact = of_get_option('email_contact','');
 
 				if($linkedin_contact)
@@ -33,11 +34,19 @@
 					</li>';
 				}
 
-				if($google_plus_contact)
+				if($telegram_contact)
 				{
 				echo '
 					<li>
-						<a rel="" title="Google+" target="_blank" class="blanco redondo icon-google-plus" href="http://' . $google_plus_contact . '"></a>
+						<a rel="" title="Telegram" target="_blank" class="blanco redondo " href="http://' . $telegram_contact . '"></a>
+					</li>';
+				}
+
+				if($mewe_contact)
+				{
+				echo '
+					<li>
+						<a rel="" title="MeWe" target="_blank" class="blanco redondo " href="http://' . $mewe_contact . '"></a>
 					</li>';
 				}
 
