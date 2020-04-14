@@ -103,7 +103,7 @@
 ?>
 <?php wp_footer();?>
 <!-- scripts generales -->
-<script type="text/javascript" defer src="<?php bloginfo('stylesheet_directory');?>/js/scripts.min.js"></script>
+<script type="text/javascript" defer src="<?php bloginfo('stylesheet_directory');?>/js/scripts.js"></script>
 <?php if(wpmd_is_notdevice()) { ?>
 <!--[if IE 8]>
 <script type="text/javascript" src="<?php bloginfo('stylesheet_directory');?>/js/html5.js"></script>
@@ -111,7 +111,7 @@
 <![endif]-->
 <?php };
 $google_analitycs = of_get_option('google_analitycs', '');
-if ( $google_analitycs != null )
+if ( $google_analitycs )
 {
 	echo '<script type="text/javascript">'.$google_analitycs.'</script>';
 };?>

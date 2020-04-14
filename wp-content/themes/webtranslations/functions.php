@@ -35,7 +35,7 @@ if ( !function_exists( 'optionsframework_init' ) )
 */
 
 // Deshabilitar Iconos Emoji
-remove_action('wp_head', 'print_emoji_detection_script', 7);
+/*remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
 
 // Desactivar el rest api
@@ -46,16 +46,16 @@ remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
 
 // Remover cosas raras de Wordpress
 remove_action( 'wp_head', 'wp_resource_hints', 2 );
-remove_action( 'wp_head', 'dns-prefetch' );
+remove_action( 'wp_head', 'dns-prefetch' );*/
 
 // Desactivar el script de embebidos
-function my_deregister_scripts()
+/*function my_deregister_scripts()
 {
 	wp_deregister_script( 'wp-embed' );
 }
 add_action( 'wp_footer', 'my_deregister_scripts' );
 
-
+*/
 // Agregando un favion al área de administración
 function admin_favicon()
 {
@@ -185,7 +185,7 @@ function change_wp_login_title()
 {
 	return get_option('blogname');
 };
-add_filter('login_headertitle', 'change_wp_login_title');
+add_filter('login_headertext', 'change_wp_login_title');
 
 
 //Permitir svg en las imágenes para cargar.
@@ -229,7 +229,7 @@ function custom__xcerpt_length($length)
 add_filter('excerpt_length','custom__xcerpt_length');
 
 
-//Remover versiones de los scripts y css innecesarios
+/*//Remover versiones de los scripts y css innecesarios
 function remove_script_version($src)
 {
 	$parts = explode('?', $src); return $parts[0];
@@ -237,7 +237,7 @@ function remove_script_version($src)
 // add_filter('script_loader_src', 'remove_script_version', 15, 1);
 // add_filter('style_loader_src', 'remove_script_version', 15, 1);
 
-
+*/
 // Deshabilitar los enlaces automáticos en los comentarios
 remove_filter('comment_text', 'make_clickable', 9);
 
@@ -384,7 +384,7 @@ if ( function_exists( 'get_custom_field_value' ) ) get_custom_field_value( 'feat
 
 
 // Habilitar la compresión de imágenes
-add_filter('jpeg_quality', create_function('','return 50;'));
+// add_filter('jpeg_quality', create_function('','return 50;'));
 
 
 //Registrar las menúes de navegación
@@ -517,132 +517,6 @@ function habilitar_mas_botones($buttons)
 };
 add_filter("mce_buttons_3","habilitar_mas_botones");
 
-/*
-// Agregar varias imágenes a las entradas y páginas
-function add_custom_meta_box() {
-	add_meta_box(
-	'custom_meta_box', // id
-	'<strong>'.__('Subir las fotos desde aquí', 'webtranslations').'</strong>', // título
-	'show_custom_meta_box', // función a la que llamamos
-	'page', // sólo para páginas
-	'normal', // contexto
-	'high'); // prioridad
-
-	add_meta_box(
-	'custom_meta_box', // id
-	'<strong>'.__('Subir las fotos desde aquí', 'webtranslations').'</strong>', // título
-	'show_custom_meta_box', // función a la que llamamos
-	'post', // sólo para páginas
-	'normal', // contexto
-	'high'); // prioridad
-};
-add_action('add_meta_boxes', 'add_custom_meta_box');
-
-// Para imágenes cargamos el script sólo si estamos en páginas.
-function add_admin_scripts ($hook) {
-	global $post;
-	if ( $hook == 'post-new.php' || $hook == 'post.php' ) {wp_enqueue_script('custom-js', get_stylesheet_directory_uri().'/js/custom-js.js');}
-};
-add_action( 'admin_enqueue_scripts', 'add_admin_scripts', 10, 1 );
-
-//Nombre del campo personalizado.
-$prefix = 'custom_';
-$custom_meta_fields = array( // Dentro de este array podemos incluir más tipos
-	 array(
-	   'label'  => 'Fotos',
-	   'desc'   => __('IMPORTANTE!!: Las imágenes deben ser mínimo de 2000px de ancho.', 'webtranslations'),
-	   'id'     => $prefix.'imagenrepetible',
-	   'type'   => 'imagenrepetible' ));
-
-// Función show custom metabox. Es larguísimaaaa!!!
-function show_custom_meta_box() {
-	global $custom_meta_fields, $post;
-	// Usamos nonce para verificación
-	wp_nonce_field( basename( __FILE__ ), 'custom_meta_box_nonce' );
- // Creamos la tabla de campos personalizados y empezamos un loop con todos ellos
-	echo '<table class="form-table"><tr><td><label for="imagenrepetible"><input type="checkbox"  id="imagenrepetible" name="imagenrepetible" value="" />'._e('Activar las diapositivas', 'webtranslations').'</label></td></tr>';
-	foreach ($custom_meta_fields as $field) { // Hacemos un loop con todos los campos personalizados
-					// obtenemos el valor del campo personalizado si existe para este $post->ID
-		$meta = get_post_meta($post->ID, $field['id'], true);
-					// comenzamos una fila de la tabla
-	echo '<tr><th><label for="'.$field['id'].'">'.$field['label'].'</label></th><td>';
-	switch($field['type']) { // Si tenemos varios tipos de campos aquí se seleccionan
-// En nuestro caso tenemos solo uno: Imagen repetible
-	case 'imagenrepetible': // Lo que pone en "type" más arriba
-		$image = get_stylesheet_directory_uri().'/img/favicon-196x196.png'; // Ponemos una imagen por defecto
-		echo '<i class="custom_default_image" style="display:none">'.$image.'</i>'; // Al principio no la mostramos
-		echo '<ul id="'.$field['id'].'-repeatable" class="custom_repeatable">';
-		$i = 0;
-	if ($meta) { // Si get_post_meta nos ha dado valores, hacemos un foreach
-		foreach($meta as $row) {
-
-// Podéis poner en su lugar thumbnail, medium o large      
-		$image = wp_get_attachment_image_src($row, 'custom-thumb-100-100');
-// la primera parte de wp_get_attachment_image_src nos da su url.
-		$image = $image[0]; ?>
-	<li><!-- Añadimos la imagen que se arrastra para cambiar posición, dentro de tu tema -->
-		<i title="<?php _e('Arrastrar y soltar. Mover arriba o abajo.', 'webtranslations');?>" class="sort hndle dashicons-before dashicons-image-flip-vertical" style="float:left;">&nbsp;&nbsp;&nbsp;</i>
-	<!-- El input con el valor del meta. Su attributo "name" tiene un número que se irá incrementando a medida que creamos nuevos campos -->
-	<input name="<?php echo $field['id'] . '['.$i.']'; ?>" id="<?php echo $field['id']; ?>" type="hidden" class="custom_upload_image" value="<?php echo $row; ?>" />
-	<!-- mostramos la imagen con 200px de ancho para ver lo que hemos subido -->
-	<img src="<?php echo $image; ?>" class="custom_preview_image" alt="" width="70"/><br />
-	<!-- El botón de Seleccionar Imagen -->
-	<input class="custom_upload_image_button button" type="button" value="<?php _e('Seleccionar imagen', 'webtranslations');?>" />&nbsp;&nbsp;&nbsp;
-	<!-- Los botones de eliminar imagen y de quitar fila-->
-	<small><a href="#" class="custom_clear_image_button"><?php _e('Eliminar imagen', 'webtranslations');?></a></small>                      
-	&nbsp;&nbsp;&nbsp;<a class="repeatable-remove button" href="#"><?php _e('Quitar fila', 'webtranslations');?></a>
-</li>
-	<?php $i++; // Incrementamos el contador para que no se repita el atributo "name"
-} // Fin del foreach
-	} else { // Si no hay datos ?>
-
-<li><i title="<?php _e('Arrastrar y soltar. Mover arriba o abajo.', 'webtranslations');?>" class="sort hndle dashicons-before dashicons-image-flip-vertical" style="float:left;">&nbsp;&nbsp;&nbsp;</i>
-	<input name="<?php echo $field['id'] . '['.$i.']'; ?>" id="<?php echo $field['id']; ?>" type="hidden" class="custom_upload_image" value="<?php echo $row; ?>" />
-	<img src="<?php echo $image; ?>" class="custom_preview_image" alt="" width="200" /><br />
-	<input class="custom_upload_image_button button" type="button" value="<?php _e('Seleccionar imagen', 'webtranslations');?>" />
-	<small><a href="#" class="custom_clear_image_button"><?php _e('Eliminar imagen', 'webtranslations');?></a></small>
-	&nbsp;&nbsp;&nbsp;<a class="repeatable-remove button" href="#"><?php _e('Quitar fila', 'webtranslations');?></a>
-</li>
-<?php } ?>
-</ul><br />
-<!-- Botón para añadir una nueva fila -->
-<a class="repeatable-add button-primary" href="#">+<?php _e(' Agregar Imagen', 'webtranslations');?></a>
-<!-- Aquí va la descripción -->
-<br clear="all" /><br /><p class="description"><?php echo $field['desc']; ?></p>
-<?php break;} // fin del switch
-	echo '</td></tr>';} // fin del foreach
-	echo '</table>'; // fin de la tabla
-}; // Fin de la función
-
-// Grabar los datos de las imágenes subidas.
-function save_custom_meta($post_id) {
-	global $custom_meta_fields;
-// verificamos usando nonce
-
-	if (!isset($_POST['custom_meta_box_nonce']) || !wp_verify_nonce($_POST['custom_meta_box_nonce'], basename(__FILE__)))
-	return $post_id;
-// comprobamos si se ha realizado una grabación automática, para no tenerla en cuenta
-	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
-	return $post_id;
-// comprobamos que el usuario puede editar
-	if ('page' == $_POST['post_type']) {
-		if (!current_user_can('edit_page', $post_id))
-		return $post_id;
-		} elseif (!current_user_can('edit_post', $post_id)) {
-		return $post_id;
-}
-// hacemos un loop por todos los campos y guardamos los datos
-	foreach ($custom_meta_fields as $field) {
-		$old = get_post_meta($post_id, $field['id'], true);
-		$new = $_POST[$field['id']];
-	if ($new && $new != $old) {
-		update_post_meta($post_id, $field['id'], $new);
-	} elseif ('' == $new && $old) {
-		delete_post_meta($post_id, $field['id'], $old);}
-	} // final del foreach
-};
-add_action('save_post', 'save_custom_meta');
-*/
 
 // Paginación avanzada
 function pagination($pages = '', $range = 2)
@@ -725,7 +599,7 @@ function remove_short_words($slug)
 };
 add_filter('sanitize_title', 'remove_short_words');
 
-
+/*
 // Relativas las url.
 function relative_url()
 {
@@ -780,7 +654,7 @@ function relative_url()
 	'get_template_directory_uri',//
 	'template_directory_uri',//
 	'get_locale_stylesheet_uri',
-	'script_loader_src', // plugin scripts url
+	// 'script_loader_src', // plugin scripts url
 	// 'style_loader_src', // Este también estaba comentado
 	'get_theme_root_uri',
 	// Comento para omitir error en Depuración en WordPress
@@ -793,7 +667,7 @@ function relative_url()
 };
 add_action( 'template_redirect', 'relative_url', 0 );
 
-/*
+
 // Agrega un título secundario
 function myplugin_add_meta_box()
 {
@@ -1181,7 +1055,7 @@ class WP_HTML_Compression
 		return $str;
 	}
 }
-function wp_html_compression_finish($html)
+/*function wp_html_compression_finish($html)
 {
 	return new WP_HTML_Compression($html);
 }
@@ -1189,80 +1063,7 @@ function wp_html_compression_start()
 {
 	ob_start('wp_html_compression_finish');
 }
-add_action('get_header', 'wp_html_compression_start');
-
-/**
- * Redirect WordPress front end https URLs to http without a plugin
- *
- * Necessary when running forced SSL in admin and you don't want links to the front end to remain https.
- *
- * @link http://blackhillswebworks.com/?p=5088
- */
- /*
-add_action( 'template_redirect', 'bhww_ssl_template_redirect', 1 );
-
-function bhww_ssl_template_redirect() {
-
-	if ( is_ssl() && ! is_admin() ) {
-	
-		if ( 0 === strpos( $_SERVER['REQUEST_URI'], 'http' ) ) {
-		
-			wp_redirect( preg_replace( '|^https://|', 'http://', $_SERVER['REQUEST_URI'] ), 301 );
-			exit();
-			
-		} else {
-		
-			wp_redirect( 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], 301 );
-			exit();
-			
-		}
-		
-	}
-	
-}
-
-add_filter("set_url_scheme", "rsssl_check_protocol_multisite", 20, 3 );
-
-function rsssl_check_protocol_multisite($url, $scheme, $orig_scheme){
-    if (is_multisite()) {
-    //get blog id by url.
-    //make sure the domain is with http, e.g. http://domain.com
-    $domain = str_replace("https://","http://",$url);
-    //remove http:// from the domain. e.g. domain.com
-    $domain = str_replace("http://","",$domain);
-    $blog_id = get_blog_id_from_url($domain);
-    // exit if no blog id was found.
-    if ($blog_id==0) return $url; //no blog id found
-    
-    //request the blog url and return it. If it is http, the returned url will now also be http.
-
-    $url = get_blog_option($blog_id, "siteurl");
-  }
-  return $url;
-}
-
-// Algo con respecto a las ssl seguro..
-define( 'PILAU_REQUEST_PROTOCOL', isset( $_SERVER[ 'HTTPS' ] ) ? 'https' : 'http' );
-
-*/
-// Cambiando el background del panel de administración
-/*add_action('admin_head', 'logo_admin');
-function logo_admin()
-{
-echo '
-	<style type="text/css">
-		body
-		{
-			background: url('.get_bloginfo('template_directory').'/img/home.jpg) top left no-repeat fixed !important;
-			background-size: cover !important;
-			-o-background-size: cover !important;
-			-ms-background-size: cover !important;
-			-moz-background-size: cover !important;
-			-webkit-background-size: cover !important;
-		}
-	</style>';
-}
-*/
+add_action('get_header', 'wp_html_compression_start');*/
 
 
 ?>
